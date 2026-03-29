@@ -11,8 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Проверяем что всё работает
-        run: echo "Код запушен! CI/CD работает!"
+      - name: Проверяем bash скрипт на ошибки
+        run: bash -n check.sh
         
-      - name: Показываем файлы
-        run: ls -la
+      - name: Запускаем скрипт
+        run: bash check.sh
+        
+      - name: Показываем отчёт
+        run: cat report_*.txt
